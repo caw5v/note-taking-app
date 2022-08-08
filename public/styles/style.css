@@ -27,14 +27,59 @@ main::-webkit-scrollbar {
   width: 0px;
 }
 
+/*##############################################
+              COLOR SELECTOR MENU                
+###############################################*/
+.hamburger-container {
+  position: relative;
+  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  gap: 0.07rem;
+}
+
+.hamburger-container:hover {
+  cursor: pointer;
+}
+
+.hamburger-menu-divs {
+  z-index: 3;
+  height: 5px;
+  width: 20px;
+  border: 2px solid rgb(142, 68, 173);
+  background-color: white;
+  border-radius: 2px;
+}
+
+.composition-hamburger {
+  position: absolute;
+  top: 2rem;
+  left: 2.6rem;
+}
+
+.body-hamburger {
+  position: absolute;
+  top: 7rem;
+  left: 2rem;
+}
+
+.composition-color-selector-container,
+.body-color-selector-container,
+.header-color-selector-container {
+  display: none;
+}
+
 /*#############################################
                   HEADER                      
 ##############################################*/
 .header {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
   position: relative;
+  flex-direction: row;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+
   z-index: 2;
   background-color: #8e44ad;
   padding: 1.5rem 2rem;
@@ -90,7 +135,7 @@ main::-webkit-scrollbar {
   overflow-y: visible;
   height: 21rem;
   width: fit-content;
-  padding: 2.5rem 2rem;
+  padding: 7.3rem 2rem 2.5rem 2rem;
   background-color: rgb(252, 252, 252);
   border: 1px solid #162029;
   box-shadow: 12px 12px 0px 0px #162029;
@@ -238,7 +283,7 @@ form {
   align-items: center;
   border-radius: 50%;
   right: -16.5rem;
-  top: -2.5rem;
+  top: 2.5rem;
   padding: 1rem 1rem;
   border: 1px solid #162029;
   background-color: #8e44ad;

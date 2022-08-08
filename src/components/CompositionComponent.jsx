@@ -15,7 +15,7 @@ export default function CompositionComponent(props) {
       props.inputContainer.current.classList.add("input-container");
       props.inputContainer.current.classList.remove("input-container-open");
 
-      props.noteContainer.current.style.paddingTop = "10rem";
+      props.noteContainer.current.style.paddingTop = "12rem";
       props.noteContainer.current.style.transition = "padding 0.18s cubic-bezier(0.56, 0.71, 0, 1)";
 
       bodyTextArea.current.classList.add("message-input-close");
@@ -32,7 +32,7 @@ export default function CompositionComponent(props) {
       props.inputContainer.current.classList.add("input-container-open");
       props.inputContainer.current.classList.remove("input-container");
 
-      props.noteContainer.current.style.paddingTop = "22.5rem";
+      props.noteContainer.current.style.paddingTop = "25rem";
       props.noteContainer.current.style.transition = "padding 0.18s cubic-bezier(0.56, 0.71, 0, 1)";
 
       bodyTextArea.current.classList.add("message-input");
@@ -48,7 +48,15 @@ export default function CompositionComponent(props) {
 
   return (
     <>
-      <NoteColor objectValue={props.objectValue} setObjectValue={props.setObjectValue} />
+      <div className="composition-color-selector-container">
+        <NoteColor objectValue={props.objectValue} setObjectValue={props.setObjectValue} />{" "}
+      </div>
+      <div className="composition-hamburger hamburger-container">
+        <span className="hamburger-menu-divs"></span>
+        <span className="hamburger-menu-divs"></span>
+        <span className="hamburger-menu-divs"></span>
+      </div>
+
       <div
         onClick={() => {
           buttonStyleConditional();

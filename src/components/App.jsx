@@ -63,7 +63,14 @@ export default function App() {
 
         {/* ############### NOTE */}
         <div ref={noteContainer} className="note-container">
-          <NoteColor />
+          <div className="body-hamburger hamburger-container">
+            <span className="hamburger-menu-divs"></span>
+            <span className="hamburger-menu-divs"></span>
+            <span className="hamburger-menu-divs"></span>
+          </div>
+          <div className="body-color-selector-container">
+            <NoteColor />
+          </div>
           {objectValue.map((object) => {
             key++;
 
@@ -102,8 +109,10 @@ export default function App() {
 // color selector for header and body
 // create minify feature for the composition component
 // make small add button for compressed input field
+// adjust note container hold the notes relative to the composition component
 
 // whats to be done
-// adjust note container hold the notes relative to the composition component
+// change color selector for composition component, header component,
+// and the body, into 3 dots that open a dropdown menu
 
 // *reminder control color selector component in the note container by referencing from the note container

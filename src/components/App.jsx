@@ -14,6 +14,7 @@ export default function App() {
   const [objectValue, setObjectValue] = useState([]);
 
   const inputContainer = useRef();
+  const noteContainer = useRef();
 
   let spectrum = null;
   let textSpectrum = null;
@@ -56,12 +57,12 @@ export default function App() {
         {/* ############### FORM*/}
         <div className="input-position-container">
           <div ref={inputContainer} className="input-container">
-            <CompositionComponent inputContainer={inputContainer} objectValue={objectValue} setObjectValue={setObjectValue} formFunction={formFunction} titleInput={titleInput} setTitleInput={setTitleInput} messageInput={messageInput} setMessageInput={setMessageInput} />
+            <CompositionComponent noteContainer={noteContainer} inputContainer={inputContainer} objectValue={objectValue} setObjectValue={setObjectValue} formFunction={formFunction} titleInput={titleInput} setTitleInput={setTitleInput} messageInput={messageInput} setMessageInput={setMessageInput} />
           </div>
         </div>
 
         {/* ############### NOTE */}
-        <div className="note-container">
+        <div ref={noteContainer} className="note-container">
           <NoteColor />
           {objectValue.map((object) => {
             key++;
@@ -100,9 +101,9 @@ export default function App() {
 // title bottom-border has to be stored in objectValue state
 // color selector for header and body
 // create minify feature for the composition component
-
-// whats to be done
-
 // make small add button for compressed input field
 
-// control color selector component in the note container by referencing from the note container
+// whats to be done
+// adjust note container hold the notes relative to the composition component
+
+// *reminder control color selector component in the note container by referencing from the note container

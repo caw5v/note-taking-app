@@ -15,6 +15,9 @@ export default function CompositionComponent(props) {
       props.inputContainer.current.classList.add("input-container");
       props.inputContainer.current.classList.remove("input-container-open");
 
+      props.noteContainer.current.style.paddingTop = "10rem";
+      props.noteContainer.current.style.transition = "padding 0.18s cubic-bezier(0.56, 0.71, 0, 1)";
+
       bodyTextArea.current.classList.add("message-input-close");
       bodyTextArea.current.classList.remove("message-input");
       bodyTextArea.current.placeholder = "";
@@ -28,6 +31,9 @@ export default function CompositionComponent(props) {
 
       props.inputContainer.current.classList.add("input-container-open");
       props.inputContainer.current.classList.remove("input-container");
+
+      props.noteContainer.current.style.paddingTop = "22.5rem";
+      props.noteContainer.current.style.transition = "padding 0.18s cubic-bezier(0.56, 0.71, 0, 1)";
 
       bodyTextArea.current.classList.add("message-input");
       bodyTextArea.current.classList.remove("message-input-close");

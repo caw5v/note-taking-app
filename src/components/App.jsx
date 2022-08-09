@@ -3,87 +3,102 @@ import Note from "./Note";
 import CompositionComponent from "./CompositionComponent";
 import Header from "./Header";
 import Footer from "./Footer";
-import NoteColor from "./NoteColor";
 
 let num = Math.random();
 let key = 1;
 
 export default function App() {
-  const [titleInput, setTitleInput] = useState("");
-  const [messageInput, setMessageInput] = useState("");
-  const [objectValue, setObjectValue] = useState([]);
+	const [titleInput, setTitleInput] = useState("");
+	const [messageInput, setMessageInput] = useState("");
+	const [objectValue, setObjectValue] = useState([]);
 
-  const inputContainer = useRef();
-  const noteContainer = useRef();
+	const inputContainer = useRef();
+	const noteContainer = useRef();
+	const blankNoteAlert = useRef();
+	const compColorDiv = useRef();
+	const headerColorDiv = useRef();
+	const completeHeader = useRef();
 
-  let spectrum = null;
-  let textSpectrum = null;
-  let borderSpectrum = null;
+	let spectrum = null;
+	let textSpectrum = null;
+	let borderSpectrum = null;
 
-  //##########Pushing object of inputs to array
-  // iterator for note id (for identifying removal on array)
+	//##########Pushing object of inputs to array
+	// iterator for note id (for identifying removal on array)
 
-  function createNoteObject() {
-    if (titleInput === "" && messageInput === "") {
-      document.getElementById("empty").classList.add("hidden-blank");
-      document.getElementById("empty").classList.remove("blank-div");
-      setTimeout(() => {
-        document.getElementById("empty").classList.remove("hidden-blank");
-        document.getElementById("empty").classList.add("blank-div");
-      }, 2000);
-    } else {
-      setObjectValue((prevValue) => {
-        return [...prevValue, { title: titleInput, message: messageInput, id: num, color: "white", text: "#34495e", border: "rgb(241, 196, 15)" }];
-      });
+	function createNoteObject() {
+		if (titleInput === "" && messageInput === "") {
+			blankNoteAlert.current.classList.add("hidden-blank");
+			blankNoteAlert.current.classList.remove("blank-div");
+			setTimeout(() => {
+				blankNoteAlert.current.classList.remove("hidden-blank");
+				blankNoteAlert.current.classList.add("blank-div");
+			}, 2000);
+		} else {
+			setObjectValue((prevValue) => {
+				return [...prevValue, { title: titleInput, message: messageInput, id: num, color: "white", text: "#34495e", border: "rgb(241, 196, 15)" }];
+			});
 
-      num++;
-    }
-  }
+			num++;
+		}
+	}
 
-  function formFunction() {
-    createNoteObject();
-    setTitleInput("");
-    setMessageInput("");
-  }
+	function formFunction() {
+		createNoteObject();
+		setTitleInput("");
+		setMessageInput("");
+	}
 
-  return (
-    <>
-      <main className="outermost-container">
-        <Header />
-        {/* ################# BLANK NOTE ALERT */}
-        <div id="empty" className="blank-div">
-          <h1>A note cannot be blank. 😉 </h1>
-        </div>
-        {/* ############### FORM*/}
-        <div className="input-position-container">
-          <div ref={inputContainer} className="input-container">
-            <CompositionComponent noteContainer={noteContainer} inputContainer={inputContainer} objectValue={objectValue} setObjectValue={setObjectValue} formFunction={formFunction} titleInput={titleInput} setTitleInput={setTitleInput} messageInput={messageInput} setMessageInput={setMessageInput} />
-          </div>
-        </div>
+	function openColorDiv(e) {
+		switch (e.target.parentElement.classList[0]) {
+			case "composition-hamburger":
+				let toggle = compColorDiv.current.style.display === "flex" ? (compColorDiv.current.style.display = "none") : (compColorDiv.current.style.display = "flex");
+				return toggle;
+				break;
+			case "header-hamburger":
+				if (headerColorDiv.current.classList.contains("header-color-selector-container")) {
+					headerColorDiv.current.classList.add("grow-horizontal");
+					headerColorDiv.current.classList.remove("header-color-selector-container");
+				} else {
+					headerColorDiv.current.classList.add("header-color-selector-container");
+					headerColorDiv.current.classList.remove("grow-horizontal");
+				}
+				break;
+			default:
+				return null;
+		}
+	}
 
-        {/* ############### NOTE */}
-        <div ref={noteContainer} className="note-container">
-          <div className="body-hamburger hamburger-container">
-            <span className="hamburger-menu-divs"></span>
-            <span className="hamburger-menu-divs"></span>
-            <span className="hamburger-menu-divs"></span>
-          </div>
-          <div className="body-color-selector-container">
-            <NoteColor />
-          </div>
-          {objectValue.map((object) => {
-            key++;
+	return (
+		<>
+			<main className="outermost-container">
+				<Header noteContainer={noteContainer} completeHeader={completeHeader} openColorDiv={openColorDiv} headerColorDiv={headerColorDiv} />
+				{/* ################# BLANK NOTE ALERT */}
+				<div ref={blankNoteAlert} id="empty" className="blank-div">
+					<h1>A note cannot be blank. 😉 </h1>
+				</div>
+				{/* ############### FORM*/}
+				<div className="input-position-container">
+					<div ref={inputContainer} className="input-container">
+						<CompositionComponent openColorDiv={openColorDiv} compColorDiv={compColorDiv} noteContainer={noteContainer} inputContainer={inputContainer} objectValue={objectValue} setObjectValue={setObjectValue} formFunction={formFunction} titleInput={titleInput} setTitleInput={setTitleInput} messageInput={messageInput} setMessageInput={setMessageInput} />
+					</div>
+				</div>
 
-            spectrum = object.color;
-            textSpectrum = object.text;
-            borderSpectrum = object.border;
-            return <Note key={key} borderSpectrum={object.border} textSpectrum={textSpectrum} spectrum={spectrum} objectValue={objectValue} setObjectValue={setObjectValue} title={object.title} message={object.message} id={object.id} />;
-          })}
-        </div>
-        <Footer />
-      </main>
-    </>
-  );
+				{/* ############### NOTE */}
+				<div ref={noteContainer} className="note-container">
+					{objectValue.map((object) => {
+						key++;
+
+						spectrum = object.color;
+						textSpectrum = object.text;
+						borderSpectrum = object.border;
+						return <Note key={key} borderSpectrum={object.border} textSpectrum={textSpectrum} spectrum={spectrum} objectValue={objectValue} setObjectValue={setObjectValue} title={object.title} message={object.message} id={object.id} />;
+					})}
+				</div>
+				<Footer />
+			</main>
+		</>
+	);
 }
 
 // Completed functionality
@@ -110,9 +125,12 @@ export default function App() {
 // create minify feature for the composition component
 // make small add button for compressed input field
 // adjust note container hold the notes relative to the composition component
+// create ref for any imperative DOM manipulation
+// and the body, into 3 dots that open a dropdown menu
 
 // whats to be done
 // change color selector for composition component, header component,
-// and the body, into 3 dots that open a dropdown menu
+// change color of airhead when color change from header color selection popup
+// make notes editable
 
 // *reminder control color selector component in the note container by referencing from the note container

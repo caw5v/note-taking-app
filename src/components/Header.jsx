@@ -4,6 +4,7 @@ import NoteColor from "./NoteColor";
 export default function Header(props) {
 	const headDiv = useRef();
 	const backgroundDiv = useRef();
+	const title = useRef();
 
 	function setClass(e) {
 		switch (e.target.innerText) {
@@ -54,7 +55,7 @@ export default function Header(props) {
 					<p className="head-color">Header Color</p>
 				</div>
 				<div ref={headDiv} id="header-popup-div-one" className="header-color-change-div">
-					<NoteColor noteContainer={props.noteContainer} completeHeader={props.completeHeader} />
+					<NoteColor title={title} noteContainer={props.noteContainer} completeHeader={props.completeHeader} />
 				</div>
 				<div
 					onClick={(e) => {
@@ -65,10 +66,10 @@ export default function Header(props) {
 					<p className="background-color">Background Color</p>
 				</div>
 				<div ref={backgroundDiv} className="body-color-change-div">
-					<NoteColor noteContainer={props.noteContainer} completeHeader={props.completeHeader} />
+					<NoteColor title={title} noteContainer={props.noteContainer} completeHeader={props.completeHeader} />
 				</div>
 			</div>
-			<h1 id="top-title" className="title">
+			<h1 ref={title} id="top-title" className="title">
 				Air<span className="italicize-span">Head</span>
 			</h1>
 		</div>

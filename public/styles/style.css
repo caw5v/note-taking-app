@@ -68,6 +68,7 @@ main::-webkit-scrollbar {
 .header-color-selector-container {
 	display: none;
 	position: absolute;
+	background-color: transparent;
 }
 
 .composition-color-selector-container {
@@ -153,6 +154,7 @@ main::-webkit-scrollbar {
 #header-popup-div-one > .color-selector-div {
 	justify-content: center;
 	align-items: center;
+	background-color: transparent;
 }
 
 .body-color-change-div > .color-selector-div {
@@ -240,6 +242,7 @@ main::-webkit-scrollbar {
 	z-index: 2;
 	height: 25px;
 	width: 100%;
+	background-color: transparent;
 }
 
 .color {
@@ -298,9 +301,10 @@ main::-webkit-scrollbar {
 	border-bottom: rgb(241, 196, 15);
 }
 .message-input {
-	height: 2rem;
+	height: 7rem;
 	width: 30rem;
 	box-shadow: 0px 9px 8px -5px #16202946;
+	margin-bottom: 0.5rem;
 	border: 1px solid #c4c5c525;
 	border-bottom: none;
 	border-radius: 10px;
@@ -309,6 +313,7 @@ main::-webkit-scrollbar {
 	padding: 1rem;
 	color: #1a2530;
 	font-family: "Montserrat", sans-serif;
+	transition: all 0.05s cubic-bezier(0, 1, 0, 1);
 }
 
 .title-input {
@@ -323,19 +328,13 @@ main::-webkit-scrollbar {
 	color: rgba(128, 128, 128, 0.699);
 }
 
-.message-input {
-	height: 7rem;
-	width: 30rem;
-	margin-bottom: 0.5rem;
-	transition: all 0.3s cubic-bezier(0, 1, 0, 1);
-}
-
 .message-input-close {
 	height: 0px;
 	width: 30rem;
 	border: none;
 	box-shadow: none;
-	transition: all 0.3s cubic-bezier(0, 1, 0, 1);
+	opacity: 0%;
+	transition: all 0.05s cubic-bezier(0, 1, 0, 1);
 }
 
 form {

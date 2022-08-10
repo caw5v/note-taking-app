@@ -37,27 +37,39 @@ export default function NoteColor(props) {
 			switch (classOne) {
 				case "color-first":
 					props.completeHeader.current.style.backgroundColor = colorOfSelector;
-					colorSelector.current.parentElement.style.backgroundColor = "white";
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
+					props.title.current.style.color = "white";
+
 					break;
 				case "color-second":
 					props.completeHeader.current.style.backgroundColor = colorOfSelector;
-					colorSelector.current.parentElement.style.backgroundColor = "white";
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
+					props.title.current.style.color = "white";
+
 					break;
 				case "color-third":
 					props.completeHeader.current.style.backgroundColor = colorOfSelector;
-					colorSelector.current.parentElement.style.backgroundColor = "white";
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
+					props.title.current.style.color = "white";
+
 					break;
 				case "color-fourth":
 					props.completeHeader.current.style.backgroundColor = colorOfSelector;
-					colorSelector.current.parentElement.style.backgroundColor = "white";
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
+
+					props.title.current.style.color = "#8e44ad";
 					break;
 				case "color-sixth":
 					props.completeHeader.current.style.backgroundColor = colorOfSelector;
-					colorSelector.current.parentElement.style.backgroundColor = "white";
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
+					props.title.current.style.color = "white";
+
 					break;
 				case "color-seventh":
 					props.completeHeader.current.style.backgroundColor = colorOfSelector;
-					colorSelector.current.parentElement.style.backgroundColor = "white";
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
+					props.title.current.style.color = "white";
+
 					break;
 
 				default:
@@ -66,31 +78,63 @@ export default function NoteColor(props) {
 		}
 
 		if (e.currentTarget.parentElement.parentElement.classList[0] === "body-color-change-div") {
-			console.log(props.noteContainer);
 			switch (classOne) {
 				case "color-first":
 					props.noteContainer.current.style.backgroundColor = colorOfSelector;
-					colorSelector.current.parentElement.style.backgroundColor = "white";
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
 					break;
 				case "color-second":
 					props.noteContainer.current.style.backgroundColor = colorOfSelector;
-					colorSelector.current.parentElement.style.backgroundColor = "white";
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
 					break;
 				case "color-third":
 					props.noteContainer.current.style.backgroundColor = colorOfSelector;
-					colorSelector.current.parentElement.style.backgroundColor = "white";
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
 					break;
 				case "color-fourth":
 					props.noteContainer.current.style.backgroundColor = colorOfSelector;
-					colorSelector.current.parentElement.style.backgroundColor = "white";
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
 					break;
 				case "color-sixth":
 					props.noteContainer.current.style.backgroundColor = colorOfSelector;
-					colorSelector.current.parentElement.style.backgroundColor = "white";
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
 					break;
 				case "color-seventh":
 					props.noteContainer.current.style.backgroundColor = colorOfSelector;
-					colorSelector.current.parentElement.style.backgroundColor = "white";
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
+					break;
+
+				default:
+					return null;
+			}
+		}
+
+		if (e.currentTarget.parentElement.parentElement.parentElement.classList.contains("input-container") || e.currentTarget.parentElement.parentElement.parentElement.classList.contains("input-container-open")) {
+			console.log("ive been called");
+			switch (classOne) {
+				case "color-first":
+					props.inputContainer.current.style.backgroundColor = colorOfSelector;
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
+					break;
+				case "color-second":
+					props.inputContainer.current.style.background = colorOfSelector;
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
+					break;
+				case "color-third":
+					props.inputContainer.current.style.background = colorOfSelector;
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
+					break;
+				case "color-fourth":
+					props.inputContainer.current.style.background = colorOfSelector;
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
+					break;
+				case "color-sixth":
+					props.inputContainer.current.style.background = colorOfSelector;
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
+					break;
+				case "color-seventh":
+					props.inputContainer.current.style.background = colorOfSelector;
+					colorSelector.current.parentElement.style.backgroundColor = "transparent";
 					break;
 
 				default:
@@ -109,10 +153,8 @@ export default function NoteColor(props) {
 
 	function borderColor() {
 		if (targetElement.className === "note-wrapper" && targetElement.style.backgroundColor === "rgb(241, 196, 15)") {
-			console.log(targetElement.style.backgroundColor);
 			targetElement.children[2].style.borderBottom = `2px solid ${targetBorder}`;
 		} else if (targetElement.className === "note-wrapper" && targetElement.style.backgroundColor !== "rgb(241, 196, 15)") {
-			console.log(targetElement.style.backgroundColor);
 			targetElement.children[2].style.borderBottom = "2px solid #f1c40f";
 		}
 	}
@@ -128,8 +170,9 @@ export default function NoteColor(props) {
 				<div
 					onClick={(e) => {
 						// #e74c3c red
+						console.log(e.currentTarget.parentElement.parentElement.parentElement);
 						colorOfSelector = " #e74c3c";
-						console.log(e.currentTarget.classList[1]);
+
 						e.target.parentElement.parentElement.style.backgroundColor = colorOfSelector;
 						targetElement = e.target.parentElement.parentElement;
 						targetColor = e.target.parentElement.parentElement.style.backgroundColor;
@@ -217,7 +260,7 @@ export default function NoteColor(props) {
 					onClick={(e) => {
 						// #34495e blue
 						colorOfSelector = "#34495e";
-						console.log(e.currentTarget.classList[1]);
+
 						e.target.parentElement.parentElement.style.backgroundColor = colorOfSelector;
 						targetElement = e.target.parentElement.parentElement;
 						targetColor = e.target.parentElement.parentElement.style.backgroundColor;

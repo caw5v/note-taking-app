@@ -1,0 +1,6 @@
+{
+	"diffEditor.wordWrap": "on",
+	"editor.wordWrap": "wordWrapColumn",
+	"workbench.editor.enablePreview": true,
+	"editor.accessibilitySupport": "off"
+}

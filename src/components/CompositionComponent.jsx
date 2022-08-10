@@ -52,7 +52,7 @@ export default function CompositionComponent(props) {
 	return (
 		<>
 			<div ref={props.compColorDiv} className="composition-color-selector-container">
-				<NoteColor noteContainer={props.noteContainer} objectValue={props.objectValue} setObjectValue={props.setObjectValue} />
+				<NoteColor inputContainer={props.inputContainer} noteContainer={props.noteContainer} objectValue={props.objectValue} setObjectValue={props.setObjectValue} />
 			</div>
 			<div
 				onClick={(e) => {
@@ -94,7 +94,7 @@ export default function CompositionComponent(props) {
 						let newMessageValue = e.target.value;
 						props.setMessageInput(newMessageValue);
 					}}
-				></textarea>
+				></textarea>{" "}
 				{/* //################## BUTTON */}
 				<AddNoteButton inputContainer={props.inputContainer} addNote={addNote} objectValue={props.objectValue} setObjectValue={props.setObjectValue} formFunction={props.formFunction} />
 			</form>

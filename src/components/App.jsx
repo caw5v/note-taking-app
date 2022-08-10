@@ -127,10 +127,13 @@ export default function App() {
 // adjust note container hold the notes relative to the composition component
 // create ref for any imperative DOM manipulation
 // and the body, into 3 dots that open a dropdown menu
-
-// whats to be done
 // change color selector for composition component, header component,
 // change color of airhead when color change from header color selection popup
-// make notes editable
 
-// *reminder control color selector component in the note container by referencing from the note container
+// whats to be done
+
+// make notes editable
+/* attach event listener to the divs surrounding h1 and p. 
+call a function to change the to elements into input fields 
+create a save button to retain changes. the save button will 
+update the objectValue array */
